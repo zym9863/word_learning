@@ -39,7 +39,7 @@ class WordService {
                   'Generate $count random English words commonly found in the Chinese postgraduate entrance examination with their meanings, phonetics, and 2 example sentences for each. Format the response as a JSON array with each word having these properties: word, meaning, phonetic, examples (array of strings).',
             },
           ],
-          'model': 'gemini-2.5-flash-preview-04-17',
+          'model': 'gemini-2.5-flash-preview-05-20',
           'stream': false,
         }),
       );
