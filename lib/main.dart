@@ -32,13 +32,13 @@ class MyApp extends StatelessWidget {
               fontWeight: FontWeight.w600,
             ),
           ),
-          tabBarTheme: TabBarTheme(
+          tabBarTheme: TabBarThemeData(
             labelColor: Colors.white,
             unselectedLabelColor: Colors.white.withOpacity(0.7),
             indicatorColor: AppColors.memoryYellow,
             indicatorSize: TabBarIndicatorSize.label,
           ),
-          cardTheme: CardTheme(
+          cardTheme: CardThemeData(
             elevation: 2,
             shadowColor: Colors.black.withOpacity(0.1),
             shape: RoundedRectangleBorder(
