@@ -23,29 +23,44 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
           appBarTheme: AppBarTheme(
             centerTitle: true,
-            elevation: 1,
-            backgroundColor: AppColors.activeBlue,
+            elevation: 0,
+            backgroundColor: Colors.transparent,
             foregroundColor: Colors.white,
             titleTextStyle: const TextStyle(
               fontFamily: 'SF Pro Rounded',
               fontSize: 22,
               fontWeight: FontWeight.w600,
+              color: Colors.white,
             ),
           ),
           tabBarTheme: TabBarThemeData(
             labelColor: Colors.white,
-            unselectedLabelColor: Colors.white.withOpacity(0.7),
+            unselectedLabelColor: Colors.white.withValues(alpha: 0.7),
             indicatorColor: AppColors.memoryYellow,
-            indicatorSize: TabBarIndicatorSize.label,
+            indicatorSize: TabBarIndicatorSize.tab,
+            indicator: BoxDecoration(
+              color: AppColors.memoryYellow.withValues(alpha: 0.2),
+              borderRadius: BorderRadius.circular(12),
+            ),
+            labelStyle: const TextStyle(
+              fontSize: 16, 
+              fontWeight: FontWeight.w600,
+              fontFamily: 'SF Pro Rounded',
+            ),
+            unselectedLabelStyle: const TextStyle(
+              fontSize: 16, 
+              fontWeight: FontWeight.w500,
+              fontFamily: 'SF Pro Rounded',
+            ),
           ),
           cardTheme: CardThemeData(
-            elevation: 2,
-            shadowColor: Colors.black.withOpacity(0.1),
+            elevation: 0,
+            shadowColor: Colors.transparent,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(16),
+              borderRadius: BorderRadius.circular(20),
             ),
-            color: Colors.white,
-            margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+            color: Colors.transparent,
+            margin: EdgeInsets.zero,
           ),
           textTheme: const TextTheme(
             headlineMedium: TextStyle(fontFamily: 'SF Pro Rounded', fontWeight: FontWeight.bold),
