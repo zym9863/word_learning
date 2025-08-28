@@ -259,7 +259,9 @@ class _WordListScreenState extends State<WordListScreen> {
                 itemCount: words.length,
                 itemBuilder: (ctx, index) {
                   final word = words[index];
-                  return Container(
+                  return AnimatedContainer(
+                    duration: Duration(milliseconds: 300 + (index * 50)),
+                    curve: Curves.easeOutCubic,
                     margin: const EdgeInsets.only(bottom: 16),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
