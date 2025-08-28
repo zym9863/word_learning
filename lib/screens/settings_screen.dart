@@ -144,40 +144,131 @@ class _SettingsScreenState extends State<SettingsScreen> {
         title: const Text('设置'),
       ),
       body: _isLoading
-          ? const Center(child: CircularProgressIndicator())
+          ? Center(
+              child: Container(
+                width: 60,
+                height: 60,
+                decoration: BoxDecoration(
+                  gradient: AppColors.primaryGradient,
+                  borderRadius: BorderRadius.circular(30),
+                ),
+                child: const Center(
+                  child: CircularProgressIndicator(
+                    valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                  ),
+                ),
+              ),
+            )
           : SingleChildScrollView(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(20.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    'API密钥设置',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                  ),
-                  const SizedBox(height: 8),
-                  const Text(
-                    '请输入您的Gemini API密钥，用于获取单词数据。',
-                    style: TextStyle(color: Colors.grey),
-                  ),
-                  const SizedBox(height: 16),
-                  TextField(
-                    controller: _apiKeyController,
-                    decoration: InputDecoration(
-                      labelText: 'Gemini API密钥',
-                      border: const OutlineInputBorder(),
-                      suffixIcon: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          IconButton(
-                            icon: Icon(
-                              _isApiKeyVisible
-                                  ? Icons.visibility_off
-                                  : Icons.visibility,
+                  Container(
+                    padding: const EdgeInsets.all(24),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      gradient: AppColors.cardGradient,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.08),
+                          blurRadius: 10,
+                          offset: const Offset(0, 4),
+                        ),
+                      ],
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            Container(
+                              width: 40,
+                              height: 40,
+                              decoration: BoxDecoration(
+                                gradient: AppColors.primaryGradient,
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              child: const Icon(
+                                Icons.vpn_key,
+                                color: Colors.white,
+                                size: 20,
+                              ),
                             ),
-                            onPressed: () {
-                              setState(() {
-                                _isApiKeyVisible = !_isApiKeyVisible;
-                              });
+                            const SizedBox(width: 16),
+                            const Text(
+                              'API密钥设置',
+                              style: TextStyle(
+                                fontSize: 22, 
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'SF Pro Rounded',
+                                color: Colors.black87,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 16),
+                        Text(
+                          '请输入您的Gemini API密钥，用于获取单词数据。',
+                          style: TextStyle(
+                            color: AppColors.darkGrey,
+                            fontSize: 16,
+                            fontFamily: 'SF Pro Rounded',
+                            height: 1.4,
+                          ),
+                        ),
+                        const SizedBox(height: 20),
+                        Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(16),
+                            color: Colors.white,
+                            border: Border.all(
+                              color: AppColors.mediumGrey.withOpacity(0.3),
+                              width: 1,
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.04),
+                                blurRadius: 8,
+                                offset: const Offset(0, 2),
+                              ),
+                            ],
+                          ),
+                          child: TextField(
+                            controller: _apiKeyController,
+                            decoration: InputDecoration(
+                              labelText: 'Gemini API密钥',
+                              labelStyle: const TextStyle(
+                                color: AppColors.darkGrey,
+                                fontFamily: 'SF Pro Rounded',
+                                fontWeight: FontWeight.w500,
+                              ),
+                              border: InputBorder.none,
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(16),
+                                borderSide: const BorderSide(color: AppColors.activeBlue, width: 2),
+                              ),
+                              suffixIcon: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Container(
+                                    margin: const EdgeInsets.all(4),
+                                    decoration: BoxDecoration(
+                                      color: AppColors.activeBlue.withOpacity(0.1),
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    child: IconButton(
+                                      icon: Icon(
+                                        _isApiKeyVisible
+                                            ? Icons.visibility_off
+                                            : Icons.visibility,
+                                        color: AppColors.activeBlue,
+                                        size: 20,
+                                      ),
+                                      onPressed: () {
+                                        setState(() {
+                                          _isApiKeyVisible = !_isApiKeyVisible;
+                                        });
                             },
                             tooltip: _isApiKeyVisible ? '隐藏API密钥' : '显示API密钥',
                           ),
