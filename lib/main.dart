@@ -26,18 +26,6 @@ class MyApp extends StatelessWidget {
             elevation: 0,
             backgroundColor: Colors.transparent,
             foregroundColor: Colors.white,
-            flexibleSpace: Container(
-              decoration: BoxDecoration(
-                gradient: AppColors.primaryGradient,
-                boxShadow: [
-                  BoxShadow(
-                    color: AppColors.activeBlue.withOpacity(0.3),
-                    blurRadius: 8,
-                    offset: const Offset(0, 2),
-                  ),
-                ],
-              ),
-            ),
             titleTextStyle: const TextStyle(
               fontFamily: 'SF Pro Rounded',
               fontSize: 22,
@@ -47,11 +35,11 @@ class MyApp extends StatelessWidget {
           ),
           tabBarTheme: TabBarThemeData(
             labelColor: Colors.white,
-            unselectedLabelColor: Colors.white.withOpacity(0.7),
+            unselectedLabelColor: Colors.white.withValues(alpha: 0.7),
             indicatorColor: AppColors.memoryYellow,
             indicatorSize: TabBarIndicatorSize.tab,
             indicator: BoxDecoration(
-              color: AppColors.memoryYellow.withOpacity(0.2),
+              color: AppColors.memoryYellow.withValues(alpha: 0.2),
               borderRadius: BorderRadius.circular(12),
             ),
             labelStyle: const TextStyle(

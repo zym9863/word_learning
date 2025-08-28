@@ -15,6 +15,18 @@ class WordDetailScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(word.word),
         elevation: 1,
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: AppColors.primaryGradient,
+            boxShadow: [
+              BoxShadow(
+                color: AppColors.activeBlue.withValues(alpha: 0.3),
+                blurRadius: 8,
+                offset: const Offset(0, 2),
+              ),
+            ],
+          ),
+        ),
         actions: [
           Consumer<WordProvider>(
             builder: (ctx, wordProvider, _) {
@@ -44,12 +56,12 @@ class WordDetailScreen extends StatelessWidget {
                 gradient: AppColors.cardGradient,
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.1),
+                    color: Colors.black.withValues(alpha: 0.1),
                     blurRadius: 15,
                     offset: const Offset(0, 8),
                   ),
                   BoxShadow(
-                    color: Colors.white.withOpacity(0.9),
+                    color: Colors.white.withValues(alpha: 0.9),
                     blurRadius: 1,
                     offset: const Offset(0, -1),
                   ),
@@ -72,7 +84,7 @@ class WordDetailScreen extends StatelessWidget {
                             shape: BoxShape.circle,
                             boxShadow: [
                               BoxShadow(
-                                color: AppColors.activeBlue.withOpacity(0.4),
+                                color: AppColors.activeBlue.withValues(alpha: 0.4),
                                 blurRadius: 12,
                                 offset: const Offset(0, 4),
                               ),
@@ -112,7 +124,7 @@ class WordDetailScreen extends StatelessWidget {
                                   fontFamily: 'SF Pro Rounded',
                                   fontStyle: FontStyle.italic,
                                   fontSize: 18,
-                                  color: AppColors.activeBlue.withOpacity(0.8),
+                                  color: AppColors.activeBlue.withValues(alpha: 0.8),
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
@@ -127,9 +139,9 @@ class WordDetailScreen extends StatelessWidget {
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
                           colors: [
-                            AppColors.mediumGrey.withOpacity(0.3),
-                            AppColors.activeBlue.withOpacity(0.5),
-                            AppColors.mediumGrey.withOpacity(0.3),
+                            AppColors.mediumGrey.withValues(alpha: 0.3),
+                            AppColors.activeBlue.withValues(alpha: 0.5),
+                            AppColors.mediumGrey.withValues(alpha: 0.3),
                           ],
                         ),
                       ),
@@ -166,10 +178,10 @@ class WordDetailScreen extends StatelessWidget {
                     Container(
                       padding: const EdgeInsets.all(16),
                       decoration: BoxDecoration(
-                        color: AppColors.activeBlue.withOpacity(0.05),
+                        color: AppColors.activeBlue.withValues(alpha: 0.05),
                         borderRadius: BorderRadius.circular(16),
                         border: Border.all(
-                          color: AppColors.activeBlue.withOpacity(0.1),
+                          color: AppColors.activeBlue.withValues(alpha: 0.1),
                           width: 1,
                         ),
                       ),
@@ -229,13 +241,13 @@ class WordDetailScreen extends StatelessWidget {
                       gradient: AppColors.cardGradient,
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black.withOpacity(0.06),
+                          color: Colors.black.withValues(alpha: 0.06),
                           blurRadius: 8,
                           offset: const Offset(0, 3),
                         ),
                       ],
                       border: Border.all(
-                        color: AppColors.memoryYellow.withOpacity(0.2), 
+                        color: AppColors.memoryYellow.withValues(alpha: 0.2), 
                         width: 1.5,
                       ),
                     ),
@@ -252,7 +264,7 @@ class WordDetailScreen extends StatelessWidget {
                               shape: BoxShape.circle,
                               boxShadow: [
                                 BoxShadow(
-                                  color: AppColors.memoryYellow.withOpacity(0.3),
+                                  color: AppColors.memoryYellow.withValues(alpha: 0.3),
                                   blurRadius: 6,
                                   offset: const Offset(0, 2),
                                 ),

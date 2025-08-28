@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../services/api_key_service.dart';
+import '../constants/colors.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -142,6 +143,18 @@ class _SettingsScreenState extends State<SettingsScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('设置'),
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: AppColors.primaryGradient,
+            boxShadow: [
+              BoxShadow(
+                color: AppColors.activeBlue.withValues(alpha: 0.3),
+                blurRadius: 8,
+                offset: const Offset(0, 2),
+              ),
+            ],
+          ),
+        ),
       ),
       body: _isLoading
           ? Center(
@@ -171,7 +184,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       gradient: AppColors.cardGradient,
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black.withOpacity(0.08),
+                          color: Colors.black.withValues(alpha: 0.08),
                           blurRadius: 10,
                           offset: const Offset(0, 4),
                         ),
@@ -223,12 +236,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
                             borderRadius: BorderRadius.circular(16),
                             color: Colors.white,
                             border: Border.all(
-                              color: AppColors.mediumGrey.withOpacity(0.3),
+                              color: AppColors.mediumGrey.withValues(alpha: 0.3),
                               width: 1,
                             ),
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.black.withOpacity(0.04),
+                                color: Colors.black.withValues(alpha: 0.04),
                                 blurRadius: 8,
                                 offset: const Offset(0, 2),
                               ),
@@ -238,7 +251,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                             controller: _apiKeyController,
                             decoration: InputDecoration(
                               labelText: 'Gemini API密钥',
-                              labelStyle: const TextStyle(
+                              labelStyle: TextStyle(
                                 color: AppColors.darkGrey,
                                 fontFamily: 'SF Pro Rounded',
                                 fontWeight: FontWeight.w500,
@@ -246,7 +259,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                               border: InputBorder.none,
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(16),
-                                borderSide: const BorderSide(color: AppColors.activeBlue, width: 2),
+                                borderSide: BorderSide(color: AppColors.activeBlue, width: 2),
                               ),
                               suffixIcon: Row(
                                 mainAxisSize: MainAxisSize.min,
@@ -254,7 +267,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                   Container(
                                     margin: const EdgeInsets.all(4),
                                     decoration: BoxDecoration(
-                                      color: AppColors.activeBlue.withOpacity(0.1),
+                                      color: AppColors.activeBlue.withValues(alpha: 0.1),
                                       borderRadius: BorderRadius.circular(8),
                                     ),
                                     child: IconButton(
@@ -268,6 +281,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                       onPressed: () {
                                         setState(() {
                                           _isApiKeyVisible = !_isApiKeyVisible;
+                                        });
                                       },
                                       tooltip: _isApiKeyVisible ? '隐藏API密钥' : '显示API密钥',
                                     ),
@@ -275,7 +289,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                   Container(
                                     margin: const EdgeInsets.all(4),
                                     decoration: BoxDecoration(
-                                      color: AppColors.memoryYellow.withOpacity(0.1),
+                                      color: AppColors.memoryYellow.withValues(alpha: 0.1),
                                       borderRadius: BorderRadius.circular(8),
                                     ),
                                     child: IconButton(
@@ -310,10 +324,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           Container(
                             padding: const EdgeInsets.all(12),
                             decoration: BoxDecoration(
-                              color: AppColors.errorRed.withOpacity(0.1),
+                              color: AppColors.errorRed.withValues(alpha: 0.1),
                               borderRadius: BorderRadius.circular(12),
                               border: Border.all(
-                                color: AppColors.errorRed.withOpacity(0.3),
+                                color: AppColors.errorRed.withValues(alpha: 0.3),
                                 width: 1,
                               ),
                             ),
@@ -328,7 +342,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                 Expanded(
                                   child: Text(
                                     _errorMessage!,
-                                    style: const TextStyle(
+                                    style: TextStyle(
                                       color: AppColors.errorRed,
                                       fontFamily: 'SF Pro Rounded',
                                       fontWeight: FontWeight.w500,
@@ -349,7 +363,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                   borderRadius: BorderRadius.circular(16),
                                   boxShadow: [
                                     BoxShadow(
-                                      color: AppColors.activeBlue.withOpacity(0.3),
+                                      color: AppColors.activeBlue.withValues(alpha: 0.3),
                                       blurRadius: 8,
                                       offset: const Offset(0, 4),
                                     ),
@@ -384,12 +398,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                 decoration: BoxDecoration(
                                   gradient: _isApiKeySaved 
                                       ? LinearGradient(
-                                          colors: [AppColors.errorRed.withOpacity(0.8), AppColors.lightRed.withOpacity(0.8)],
+                                          colors: [AppColors.errorRed.withValues(alpha: 0.8), AppColors.lightRed.withValues(alpha: 0.8)],
                                           begin: Alignment.topLeft,
                                           end: Alignment.bottomRight,
                                         )
                                       : LinearGradient(
-                                          colors: [AppColors.mediumGrey.withOpacity(0.3), AppColors.mediumGrey.withOpacity(0.2)],
+                                          colors: [AppColors.mediumGrey.withValues(alpha: 0.3), AppColors.mediumGrey.withValues(alpha: 0.2)],
                                           begin: Alignment.topLeft,
                                           end: Alignment.bottomRight,
                                         ),
@@ -431,7 +445,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       gradient: AppColors.cardGradient,
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black.withOpacity(0.08),
+                          color: Colors.black.withValues(alpha: 0.08),
                           blurRadius: 10,
                           offset: const Offset(0, 4),
                         ),

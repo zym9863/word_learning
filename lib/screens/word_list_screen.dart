@@ -23,6 +23,18 @@ class _WordListScreenState extends State<WordListScreen> {
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Word Learning'),
+          flexibleSpace: Container(
+            decoration: BoxDecoration(
+              gradient: AppColors.primaryGradient,
+              boxShadow: [
+                BoxShadow(
+                  color: AppColors.activeBlue.withValues(alpha: 0.3),
+                  blurRadius: 8,
+                  offset: const Offset(0, 2),
+                ),
+              ],
+            ),
+          ),
           actions: [
             IconButton(
               icon: const Icon(Icons.settings, size: 26),
@@ -57,7 +69,7 @@ class _WordListScreenState extends State<WordListScreen> {
             borderRadius: BorderRadius.circular(20),
             boxShadow: [
               BoxShadow(
-                color: AppColors.activeBlue.withOpacity(0.4),
+                color: AppColors.activeBlue.withValues(alpha: 0.4),
                 blurRadius: 12,
                 offset: const Offset(0, 6),
               ),
@@ -96,7 +108,7 @@ class _WordListScreenState extends State<WordListScreen> {
         gradient: AppColors.cardGradient,
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.06),
+            color: Colors.black.withValues(alpha: 0.06),
             blurRadius: 8,
             offset: const Offset(0, 2),
           ),
@@ -124,11 +136,11 @@ class _WordListScreenState extends State<WordListScreen> {
               ? Container(
                   margin: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
-                    color: AppColors.mediumGrey.withOpacity(0.3),
+                    color: AppColors.mediumGrey.withValues(alpha: 0.3),
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: IconButton(
-                    icon: const Icon(Icons.clear, color: AppColors.darkGrey, size: 18),
+                    icon: Icon(Icons.clear, color: AppColors.darkGrey, size: 18),
                     onPressed: () {
                       _searchController.clear();
                       setState(() {
@@ -146,11 +158,11 @@ class _WordListScreenState extends State<WordListScreen> {
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(20),
-            borderSide: BorderSide(color: AppColors.mediumGrey.withOpacity(0.3), width: 1.0),
+            borderSide: BorderSide(color: AppColors.mediumGrey.withValues(alpha: 0.3), width: 1.0),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(20),
-            borderSide: const BorderSide(color: AppColors.activeBlue, width: 2.0),
+            borderSide: BorderSide(color: AppColors.activeBlue, width: 2.0),
           ),
           contentPadding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 20.0),
         ),
@@ -172,7 +184,7 @@ class _WordListScreenState extends State<WordListScreen> {
     return Consumer<WordProvider>(
       builder: (ctx, wordProvider, child) {
         if (wordProvider.isLoading) {
-          return const Center(child: CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(AppColors.activeBlue)));
+          return Center(child: CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(AppColors.activeBlue)));
         }
 
         var words = showFavorites ? wordProvider.favoriteWords : wordProvider.words;
@@ -198,7 +210,7 @@ class _WordListScreenState extends State<WordListScreen> {
                     decoration: BoxDecoration(
                       gradient: showFavorites 
                           ? LinearGradient(
-                              colors: [AppColors.errorRed.withOpacity(0.1), AppColors.lightRed.withOpacity(0.1)],
+                              colors: [AppColors.errorRed.withValues(alpha: 0.1), AppColors.lightRed.withValues(alpha: 0.1)],
                               begin: Alignment.topLeft,
                               end: Alignment.bottomRight,
                             )
@@ -206,7 +218,7 @@ class _WordListScreenState extends State<WordListScreen> {
                       shape: BoxShape.circle,
                       boxShadow: [
                         BoxShadow(
-                          color: (showFavorites ? AppColors.errorRed : AppColors.activeBlue).withOpacity(0.2),
+                          color: (showFavorites ? AppColors.errorRed : AppColors.activeBlue).withValues(alpha: 0.2),
                           blurRadius: 20,
                           offset: const Offset(0, 10),
                         ),
@@ -268,12 +280,12 @@ class _WordListScreenState extends State<WordListScreen> {
                       gradient: AppColors.cardGradient,
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black.withOpacity(0.08),
+                          color: Colors.black.withValues(alpha: 0.08),
                           blurRadius: 10,
                           offset: const Offset(0, 4),
                         ),
                         BoxShadow(
-                          color: Colors.white.withOpacity(0.9),
+                          color: Colors.white.withValues(alpha: 0.9),
                           blurRadius: 1,
                           offset: const Offset(0, -1),
                         ),
@@ -283,8 +295,8 @@ class _WordListScreenState extends State<WordListScreen> {
                       color: Colors.transparent,
                       child: InkWell(
                         borderRadius: BorderRadius.circular(20),
-                        splashColor: AppColors.activeBlue.withOpacity(0.1),
-                        highlightColor: AppColors.activeBlue.withOpacity(0.05),
+                        splashColor: AppColors.activeBlue.withValues(alpha: 0.1),
+                        highlightColor: AppColors.activeBlue.withValues(alpha: 0.05),
                         onTap: () {
                           Navigator.of(context).push(
                             MaterialPageRoute(
@@ -306,7 +318,7 @@ class _WordListScreenState extends State<WordListScreen> {
                                   shape: BoxShape.circle,
                                   boxShadow: [
                                     BoxShadow(
-                                      color: AppColors.activeBlue.withOpacity(0.3),
+                                      color: AppColors.activeBlue.withValues(alpha: 0.3),
                                       blurRadius: 8,
                                       offset: const Offset(0, 2),
                                     ),
@@ -346,7 +358,7 @@ class _WordListScreenState extends State<WordListScreen> {
                                       style: TextStyle(
                                         fontSize: 15,
                                         fontStyle: FontStyle.italic,
-                                        color: AppColors.activeBlue.withOpacity(0.8),
+                                        color: AppColors.activeBlue.withValues(alpha: 0.8),
                                         fontFamily: 'SF Pro Rounded',
                                         fontWeight: FontWeight.w500,
                                       ),
@@ -371,8 +383,8 @@ class _WordListScreenState extends State<WordListScreen> {
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
                                   color: word.isFavorite 
-                                      ? AppColors.errorRed.withOpacity(0.1)
-                                      : Colors.grey.withOpacity(0.1),
+                                      ? AppColors.errorRed.withValues(alpha: 0.1)
+                                      : Colors.grey.withValues(alpha: 0.1),
                                 ),
                                 child: IconButton(
                                   icon: Icon(
