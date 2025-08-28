@@ -15,8 +15,8 @@ on:
         required: false
         default: false
         type: boolean
-      flutter_version:
-        description: "Flutter version (optional, default stable)"
+      flutter_channel:
+        description: "Flutter channel (stable/beta/master). Default stable"
         required: false
         type: string
 
@@ -28,7 +28,7 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  FLUTTER_VERSION: ${{ github.event.inputs.flutter_version != '' && github.event.inputs.flutter_version || 'stable' }}
+  FLUTTER_CHANNEL: ${{ github.event.inputs.flutter_channel != '' && github.event.inputs.flutter_channel || 'stable' }}
   TAG_NAME: ${{ github.event.inputs.tag != '' && github.event.inputs.tag || github.ref_name }}
 
 jobs:
@@ -55,7 +55,7 @@ jobs:
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: ${{ env.FLUTTER_CHANNEL }}
           cache: true
 
       - name: Flutter version
@@ -94,7 +94,7 @@ jobs:
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: ${{ env.FLUTTER_CHANNEL }}
           cache: true
 
       - name: Enable Windows desktop (idempotent)
